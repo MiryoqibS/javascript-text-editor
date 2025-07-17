@@ -1,0 +1,9 @@
+// Базовые стили
+@use "./styles/reset";
+@use "./styles/typography";
+@use "./styles/variables";
+@use "./styles/utils";
+@use "./styles/mixins";
+@use "./styles/global";
+
+@use "./styles/editor";

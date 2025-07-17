@@ -1,0 +1,19 @@
+@use "./mixins" as m;
+
+body,
+html {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-base);
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    background-color: var(--color-bg)
+}
+
+#root {
+    @include m.flex-center;
+
+    width: 100%;
+    min-height: 100vh;
+}

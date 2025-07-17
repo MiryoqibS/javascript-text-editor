@@ -1,0 +1,26 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin square($size) {
+    width: $size;
+    height: $size;
+    aspect-ratio: 1/1;
+}
+
+@mixin hover() {
+    @media screen and (hover:hover) {
+        &:hover {
+            cursor: pointer;
+            @content;
+        }
+    }
+
+    @media screen and (hover:none) {
+        &:active {
+            @content;
+        }
+    }
+}
