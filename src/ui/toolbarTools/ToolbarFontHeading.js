@@ -1,22 +1,22 @@
 import { loadIcon } from "../../utils/loadIcon";
 
 export class ToolbarFontHeading {
-    constructor(getSelectionRange) {
-        this.getSelectionRange = getSelectionRange;
+    constructor(getSelection) {
+        this.getSelection = getSelection;
     }
 
     render(editorFieldElement) {
         console.log(editorFieldElement);
 
         const container = document.createElement("div");
-        container.className = "editor-toolbar__tool accordion";
+        container.className = "editor-toolbar__tool accordion no-select";
 
 
         const accordion = document.createElement("div");
         accordion.className = "editor-toolbar__tool-accordion";
 
         const accordionHeader = document.createElement("header");
-        accordionHeader.className = "editor-toolbar__tool-accordion__header";
+        accordionHeader.className = "editor-toolbar__tool-accordion__header no-select";
 
         const accordionHeaderTitle = document.createElement("p");
         accordionHeaderTitle.innerText = "Text size: <p>";
@@ -34,11 +34,11 @@ export class ToolbarFontHeading {
             accordionList.classList.toggle("hide");
         });
 
-        const HEADINGS = ["<h1>", "<h2>", "<h3>", "<h4>", "<h5>", "<h6>", "<p>"];
+        const HEADINGS = ["h1", "h2", "h3", "h4", "h5", "h6", "p"];
 
         HEADINGS.forEach(heading => {
             const accordionItem = document.createElement("li");
-            accordionItem.className = "editor-toolbar__tool-accordion__item";
+            accordionItem.className = "editor-toolbar__tool-accordion__item no-select";
 
             const title = document.createElement("p");
             title.className = "title";
@@ -51,23 +51,20 @@ export class ToolbarFontHeading {
             accordionItem.appendChild(backgroundEffect);
 
             accordionItem.addEventListener("click", () => {
-                const savedSelectedText = this.getSelectionRange();
-
-                if (!savedSelectedText || document.getSelection().isCollapsed) {
-                    console.log("Выдели текст");
-                    return;
-                };
-
-                accordionHeaderTitle.innerText = `Text size: ${heading}`;
+                // Стили
+                accordionHeaderTitle.innerText = `Text size: <${heading}>`;
                 accordionList.classList.add("hide");
                 accordionHeader.classList.remove("opened");
                 editorFieldElement.focus();
 
-                const selectedText = document.getSelection();
-                selectedText.removeAllRanges();
-                selectedText.addRange(savedSelectedText);
+                // Логика
+                const sel = window.getSelection(); // выделенный текст
 
-                document.execCommand('formatBlock', false, heading);
+                // Проверка выделенный-ли текст
+                if (sel.rangeCount) {
+                    const range = sel.getRangeAt(0);
+                    document.execCommand('insertHTML', false, `<${heading}>` + document.getSelection().toString() + `</${heading}>`);
+                };
             });
 
             accordionList.appendChild(accordionItem);

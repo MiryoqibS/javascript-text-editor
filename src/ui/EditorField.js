@@ -5,8 +5,6 @@ export class EditorField {
         this.element.className = "editor-field";
 
         this.#setupAutoSize();
-
-        this.selectedRange = null;
     }
 
     render() {
@@ -27,17 +25,6 @@ export class EditorField {
             this.#autoResize();
             callback()
         });
-
-        this.element.addEventListener("mouseup", () => {
-            const selection = document.getSelection();
-            if (selection.rangeCount > 0) {
-                this.selectedRange = selection.getRangeAt(0).cloneRange();
-            };
-        })
-    }
-
-    getSelectedRange() {
-        return this.selectedRange;
     }
 
     #autoResize() {
