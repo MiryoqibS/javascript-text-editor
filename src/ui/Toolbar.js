@@ -15,6 +15,7 @@ export class Toolbar {
         const italicIcon = loadIcon("italic");
         const underlineIcon = loadIcon("underline");
         const strikeThroughIcon = loadIcon("strikeThrough");
+        const listBulletIcon = loadIcon("listBullet");
 
         const execCommand = (command, ...args) => {
             const editorField = document.querySelector(".editor-field");
@@ -42,6 +43,11 @@ export class Toolbar {
             new Button(() => {
                 execCommand("strikeThrough");
             }, strikeThroughIcon),
+
+            // Кнопка для создания списка с точками
+            new Button(() => {
+                execCommand("insertUnorderedList");
+            }, listBulletIcon),
 
         ];
     }

@@ -9,14 +9,14 @@ export class ToolbarFontHeading {
         console.log(editorFieldElement);
 
         const container = document.createElement("div");
-        container.className = "editor-toolbar__tool accordion no-select";
+        container.className = "editor-toolbar__tool accordion";
 
 
         const accordion = document.createElement("div");
         accordion.className = "editor-toolbar__tool-accordion";
 
         const accordionHeader = document.createElement("header");
-        accordionHeader.className = "editor-toolbar__tool-accordion__header no-select";
+        accordionHeader.className = "editor-toolbar__tool-accordion__header";
 
         const accordionHeaderTitle = document.createElement("p");
         accordionHeaderTitle.innerText = "Text size: <p>";
@@ -38,7 +38,7 @@ export class ToolbarFontHeading {
 
         HEADINGS.forEach(heading => {
             const accordionItem = document.createElement("li");
-            accordionItem.className = "editor-toolbar__tool-accordion__item no-select";
+            accordionItem.className = "editor-toolbar__tool-accordion__item";
 
             const title = document.createElement("p");
             title.className = "title";

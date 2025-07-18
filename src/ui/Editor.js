@@ -11,9 +11,11 @@ export class Editor {
     }
 
     render() {
+        const editorGlobalTools = this.#renderGlobalTools();
         const toolbarElement = this.toolbar.render();
         const editorFieldElement = this.editorField.render();
 
+        this.container.appendChild(editorGlobalTools);
         this.container.appendChild(toolbarElement);
         this.container.appendChild(editorFieldElement);
 
@@ -34,5 +36,35 @@ export class Editor {
 
     onInput(callback) {
         this.editorField.onInput(callback);
+    }
+
+    #renderGlobalTools() {
+        const container = document.createElement("header");
+        container.className = "editor-header";
+
+        // Toggle для смены тем
+        const toggle = document.createElement("div");
+        toggle.className = "editor-header__toggle";
+
+        const toggleBar = document.createElement("span");
+        toggleBar.className = "editor-header__toggle-bar";
+
+        const toggleInput = document.createElement("input");
+        toggleInput.className = "editor-header__toggle-input";
+        toggleInput.type = "checkbox";
+        toggleInput.addEventListener("input", () => {
+            if (toggleInput.checked) {
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else {
+                document.documentElement.setAttribute("data-theme", "light");
+            };
+        });
+        
+        toggle.appendChild(toggleBar);
+        toggle.appendChild(toggleInput);
+
+        container.appendChild(toggle);
+
+        return container;
     }
 }

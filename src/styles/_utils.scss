@@ -6,14 +6,3 @@
     position: relative;
     margin: 0 auto;
 }
-
-.no-select {
-    user-select: none;
-    /* Standard property */
-    -webkit-user-select: none;
-    /* For WebKit browsers (Chrome, Safari) */
-    -moz-user-select: none;
-    /* For Firefox */
-    -ms-user-select: none;
-    /* For Internet Explorer/Edge */
-}
