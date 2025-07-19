@@ -79,6 +79,17 @@
         <path d="M8 18h13" />
         <path d="M8 6h13" />
     </symbol>
+    <!-- Icon list ordered -->
+    <symbol id="listOrdered" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-list-ordered-icon lucide-list-ordered">
+        <path d="M10 12h11" />
+        <path d="M10 18h11" />
+        <path d="M10 6h11" />
+        <path d="M4 10h2" />
+        <path d="M4 6h1v4" />
+        <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1" />
+    </symbol>
     <!-- Icon arrow down -->
     <symbol id="arrowDown" viewBox="0 0 10 6" fill="none">
         <path d="M5 6L0 1L0.7 0.300003L5 4.6L9.3 0.300003L10 1L5 6Z" fill="currentColor" />

@@ -2,6 +2,7 @@ import { Tool } from "../Tool";
 import { loadIcon } from "../../utils/loadIcon";
 import { capitalize } from "../../utils/capitalize";
 
+// Общий Класс для выравнивания текста в переданную сторону
 export class TextAlignTool extends Tool {
     constructor(resizeEditorField, align) {
         super(false);

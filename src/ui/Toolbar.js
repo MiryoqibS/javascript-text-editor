@@ -8,6 +8,7 @@ import { TextColorTool } from "./toolbarTools/TextColorTool.js";
 import { TextHeadingTool } from "./toolbarTools/TextHeadingTool.js";
 import { TextFormatClear } from "./toolbarTools/TextFormatClear.js";
 import { TextAlignTool } from "./toolbarTools/TextAlignTool.js";
+import { OrderedListTool } from "./toolbarTools/OrderedListTool.js";
 
 export class Toolbar {
     constructor(resizeEditorField) {
@@ -35,6 +36,7 @@ export class Toolbar {
 
         // инструменты создания/превращение
         const makeUnorderedList = new UnorderedListTool().render();
+        const makeOrderedList = new OrderedListTool().render();
 
         this.container.appendChild(formatTextBold);
         this.container.appendChild(formatTextItalic);
@@ -49,6 +51,7 @@ export class Toolbar {
         this.container.appendChild(formatTextJustify);
 
         this.container.appendChild(makeUnorderedList);
+        this.container.appendChild(makeOrderedList);
 
         return this.container;
     }
