@@ -60,6 +60,14 @@
         <path d="M21 18H7" />
         <path d="M21 6H3" />
     </symbol>
+    <!-- Icon align justify -->
+    <symbol id="alignJustify" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-align-justify-icon lucide-align-justify">
+        <path d="M3 12h18" />
+        <path d="M3 18h18" />
+        <path d="M3 6h18" />
+    </symbol>
     <!-- Icon list bullet -->
     <symbol id="listBullet" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

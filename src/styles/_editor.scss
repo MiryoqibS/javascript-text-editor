@@ -180,6 +180,7 @@
     &-button {
         @include m.square(32px);
 
+        cursor: pointer;
         color: var(--color-text);
         background-color: var(--color-bg-light);
         box-shadow: var(--shadow-md);

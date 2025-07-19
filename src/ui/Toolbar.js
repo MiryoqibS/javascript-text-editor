@@ -10,6 +10,7 @@ import { TextFormatClear } from "./toolbarTools/TextFormatClear.js";
 import { TextCenterTool } from "./toolbarTools/TextCenterTool.js";
 import { TextLeftTool } from "./toolbarTools/TextLeftTool.js";
 import { TextRightTool } from "./toolbarTools/TextRightTool.js";
+import { TextJustifyTool } from "./toolbarTools/TextJustifyTool.js";
 
 export class Toolbar {
     constructor(resizeEditorField) {
@@ -32,6 +33,7 @@ export class Toolbar {
         const formatTextCenter = new TextCenterTool(this.resizeEditorField).render();
         const formatTextLeft = new TextLeftTool(this.resizeEditorField).render();
         const formatTextRight = new TextRightTool(this.resizeEditorField).render();
+        const formatTextJustify = new TextJustifyTool(this.resizeEditorField).render();
 
         // инструменты создания/превращение
         const makeUnorderedList = new UnorderedListTool().render();
@@ -46,6 +48,7 @@ export class Toolbar {
         this.container.appendChild(formatTextCenter);
         this.container.appendChild(formatTextLeft);
         this.container.appendChild(formatTextRight);
+        this.container.appendChild(formatTextJustify);
 
         this.container.appendChild(makeUnorderedList);
 
