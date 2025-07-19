@@ -1,16 +1,15 @@
 import { loadIcon } from "../../utils/loadIcon";
 
-export class ToolbarFontHeading {
-    constructor(getSelection) {
-        this.getSelection = getSelection;
+export class TextHeadingTool {
+    constructor() {
+        this.HEADINGS = ["h1", "h2", "h3", "h4", "h5", "h6", "p"];
     }
 
-    render(editorFieldElement) {
-        console.log(editorFieldElement);
+    render() {
+        let editorFieldElement = null;
 
         const container = document.createElement("div");
         container.className = "editor-toolbar__tool accordion";
-
 
         const accordion = document.createElement("div");
         accordion.className = "editor-toolbar__tool-accordion";
@@ -30,13 +29,14 @@ export class ToolbarFontHeading {
         accordionList.className = "editor-toolbar__tool-accordion__list hide";
 
         accordionHeader.addEventListener("click", () => {
+            // Выбираем поле редактора текста
+            editorFieldElement = document.querySelector(".editor-field");
+
             accordionHeader.classList.toggle("opened");
             accordionList.classList.toggle("hide");
         });
 
-        const HEADINGS = ["h1", "h2", "h3", "h4", "h5", "h6", "p"];
-
-        HEADINGS.forEach(heading => {
+        this.HEADINGS.forEach(heading => {
             const accordionItem = document.createElement("li");
             accordionItem.className = "editor-toolbar__tool-accordion__item";
 
@@ -77,5 +77,4 @@ export class ToolbarFontHeading {
 
         return container;
     }
-
 }

@@ -1,96 +1,41 @@
-import { Button } from "./Button";
-import { loadIcon } from "../utils/loadIcon.js";
-import { ToolbarInputColor } from "./toolbarTools/ToolbarInputColor.js";
-import { ToolbarFontHeading } from "./toolbarTools/ToolbarFontHeading.js";
+// Классы Инструментов
+import { TextBoldTool } from "./toolbarTools/TextBoldTool.js";
+import { TextItalicTool } from "./toolbarTools/TextItalicTool.js";
+import { TextUnderLineTool } from "./toolbarTools/TextUnderlineTool.js";
+import { TextStrikeThroughTool } from "./toolbarTools/TextStrikeThroughTool.js";
+import { UnorderedListTool } from "./toolbarTools/UnorderedListTool.js";
+import { TextColorTool } from "./toolbarTools/TextColorTool.js";
+import { TextHeadingTool } from "./toolbarTools/TextHeadingTool.js";
+import { TextFormatClear } from "./toolbarTools/TextFormatClear.js";
 
 export class Toolbar {
     constructor() {
         this.container = document.createElement("div");
         this.container.className = "editor-toolbar";
-        this.buttons = [];
-    }
-
-    initButtons() {
-        const boldIcon = loadIcon("bold");
-        const italicIcon = loadIcon("italic");
-        const underlineIcon = loadIcon("underline");
-        const strikeThroughIcon = loadIcon("strikeThrough");
-        const listBulletIcon = loadIcon("listBullet");
-
-        const execCommand = (command, ...args) => {
-            const editorField = document.querySelector(".editor-field");
-            editorField.focus();
-            document.execCommand(command, ...args);
-        };
-
-        this.buttons = [
-            // Кнопка жирного текста
-            new Button(() => {
-                execCommand("bold");
-            }, boldIcon),
-
-            // Кнопка кривого текста
-            new Button(() => {
-                execCommand("italic");
-            }, italicIcon),
-
-            // Кнопка для нижнего подчеркивания символов
-            new Button(() => {
-                execCommand("underline");
-            }, underlineIcon),
-
-            // Кнопка для подчеркивания по центру символов
-            new Button(() => {
-                execCommand("strikeThrough");
-            }, strikeThroughIcon),
-
-            // Кнопка для создания списка с точками
-            new Button(() => {
-                execCommand("insertUnorderedList");
-            }, listBulletIcon),
-
-        ];
-    }
-
-    changeFontColor(editorFieldElement) {
-        // Отдельный инструмент пипетка
-        const colorPicker = new ToolbarInputColor((input) => {
-            editorFieldElement.focus();
-            document.execCommand("foreColor", false, input.value);
-        });
-
-        this.container.appendChild(colorPicker.render());
-    }
-
-    clearText(setFieldText) {
-        // Отдельный инструмент очистка всего текста
-        const eraserIcon = loadIcon("eraser");
-        const button = document.createElement("button");
-        button.className = "button editor-button";
-        button.appendChild(eraserIcon);
-
-        button.addEventListener("click", () => {
-            setFieldText("");
-            const editorField = document.querySelector(".editor-field");
-            editorField.focus();
-        });
-
-        this.container.appendChild(button);
-    }
-
-    changeFontHeading(editorFieldElement, getSelectionRange) {
-        // Отдельный инструмент для Заголовков
-        const headingChanger = new ToolbarFontHeading(getSelectionRange);
-        const headingAccordion = headingChanger.render(editorFieldElement);
-
-        this.container.appendChild(headingAccordion);
     }
 
     render() {
-        this.initButtons();
+        // инструменты форматирования
+        const formatTextBold = new TextBoldTool().render();
+        const formatTextItalic = new TextItalicTool().render();
+        const formatTextUnderline = new TextUnderLineTool().render();
+        const formatTextStrikeThrough = new TextStrikeThroughTool().render();
+        const formatTextColor = new TextColorTool().render();
+        const formatTextHeading = new TextHeadingTool().render();
+        const formatTextClear = new TextFormatClear().render();
 
-        // ОБщие инструменты
-        this.buttons.forEach(button => this.container.appendChild(button.render()));
+        // инструменты создания/превращение
+        const makeUnorderedList = new UnorderedListTool().render();
+
+        this.container.appendChild(formatTextBold);
+        this.container.appendChild(formatTextItalic);
+        this.container.appendChild(formatTextUnderline);
+        this.container.appendChild(formatTextStrikeThrough);
+        this.container.appendChild(formatTextColor);
+        this.container.appendChild(formatTextHeading);
+        this.container.appendChild(formatTextClear);
+
+        this.container.appendChild(makeUnorderedList);
 
         return this.container;
     }

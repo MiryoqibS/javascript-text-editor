@@ -19,10 +19,6 @@ export class Editor {
         this.container.appendChild(toolbarElement);
         this.container.appendChild(editorFieldElement);
 
-        this.toolbar.changeFontColor(editorFieldElement);
-        this.toolbar.changeFontHeading(editorFieldElement);
-        this.toolbar.clearText(this.editorField.setText.bind(this.editorField));
-
         return this.container;
     }
 
