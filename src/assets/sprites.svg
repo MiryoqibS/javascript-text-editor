@@ -68,8 +68,8 @@
         <path d="M3 18h18" />
         <path d="M3 6h18" />
     </symbol>
-    <!-- Icon list bullet -->
-    <symbol id="listBullet" viewBox="0 0 24 24" fill="none"
+    <!-- Icon list unordered -->
+    <symbol id="listUnordered" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="lucide lucide-list-icon lucide-list">
         <path d="M3 12h.01" />

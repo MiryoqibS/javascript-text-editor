@@ -3,12 +3,11 @@ import { TextBoldTool } from "./toolbarTools/TextBoldTool.js";
 import { TextItalicTool } from "./toolbarTools/TextItalicTool.js";
 import { TextUnderLineTool } from "./toolbarTools/TextUnderlineTool.js";
 import { TextStrikeThroughTool } from "./toolbarTools/TextStrikeThroughTool.js";
-import { UnorderedListTool } from "./toolbarTools/UnorderedListTool.js";
 import { TextColorTool } from "./toolbarTools/TextColorTool.js";
 import { TextHeadingTool } from "./toolbarTools/TextHeadingTool.js";
 import { TextFormatClear } from "./toolbarTools/TextFormatClear.js";
 import { TextAlignTool } from "./toolbarTools/TextAlignTool.js";
-import { OrderedListTool } from "./toolbarTools/OrderedListTool.js";
+import { ListTool } from "./toolbarTools/ListTool.js";
 
 export class Toolbar {
     constructor(resizeEditorField) {
@@ -35,8 +34,8 @@ export class Toolbar {
         const formatTextJustify = new TextAlignTool(this.resizeEditorField, "justify").render();
 
         // инструменты создания/превращение
-        const makeUnorderedList = new UnorderedListTool().render();
-        const makeOrderedList = new OrderedListTool().render();
+        const makeUnorderedList = new ListTool(false).render();
+        const makeOrderedList = new ListTool(true).render();
 
         this.container.appendChild(formatTextBold);
         this.container.appendChild(formatTextItalic);

@@ -1,10 +1,15 @@
 import { Tool } from "../Tool";
 import { loadIcon } from "../../utils/loadIcon";
 
-// Кнопка для создания списка с точками
-export class UnorderedListTool extends Tool{
+// Общий Класс для создания списков 
+export class ListTool extends Tool {
+    constructor(isOrdered = false) {
+        super(false);
+        this.isOrdered = isOrdered
+    }
+
     render() {
-        const unorderedListIcon = loadIcon("listBullet");
+        const listIcon = loadIcon(this.isOrdered ? "listOrdered" : "listUnordered");
 
         const button = this.init(() => {
             const selection = document.getSelection();
@@ -17,13 +22,13 @@ export class UnorderedListTool extends Tool{
             const range = selection.getRangeAt(0);
             const selectedText = range.extractContents();
 
-            const ul = document.createElement("ul");
+            const list = document.createElement(this.isOrdered ? "ol" : "ul");
             const li = document.createElement("li");
             li.appendChild(selectedText);
-            ul.appendChild(li);
+            list.appendChild(li);
 
-            range.insertNode(ul);
-        }, unorderedListIcon);
+            range.insertNode(list);
+        }, listIcon);
 
 
         return button;
