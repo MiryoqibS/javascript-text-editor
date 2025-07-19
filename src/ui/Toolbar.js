@@ -7,6 +7,9 @@ import { UnorderedListTool } from "./toolbarTools/UnorderedListTool.js";
 import { TextColorTool } from "./toolbarTools/TextColorTool.js";
 import { TextHeadingTool } from "./toolbarTools/TextHeadingTool.js";
 import { TextFormatClear } from "./toolbarTools/TextFormatClear.js";
+import { TextCenterTool } from "./toolbarTools/TextCenterTool.js";
+import { TextLeftTool } from "./toolbarTools/TextLeftTool.js";
+import { TextRightTool } from "./toolbarTools/TextRightTool.js";
 
 export class Toolbar {
     constructor() {
@@ -23,6 +26,9 @@ export class Toolbar {
         const formatTextColor = new TextColorTool().render();
         const formatTextHeading = new TextHeadingTool().render();
         const formatTextClear = new TextFormatClear().render();
+        const formatTextCenter = new TextCenterTool().render();
+        const formatTextLeft = new TextLeftTool().render();
+        const formatTextRight = new TextRightTool().render();
 
         // инструменты создания/превращение
         const makeUnorderedList = new UnorderedListTool().render();
@@ -34,6 +40,9 @@ export class Toolbar {
         this.container.appendChild(formatTextColor);
         this.container.appendChild(formatTextHeading);
         this.container.appendChild(formatTextClear);
+        this.container.appendChild(formatTextCenter);
+        this.container.appendChild(formatTextLeft);
+        this.container.appendChild(formatTextRight);
 
         this.container.appendChild(makeUnorderedList);
 
