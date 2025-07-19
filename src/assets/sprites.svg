@@ -81,6 +81,6 @@
     </symbol>
     <!-- Icon arrow down -->
     <symbol id="arrowDown" viewBox="0 0 10 6" fill="none">
-        <path d="M5 6L0 1L0.7 0.300003L5 4.6L9.3 0.300003L10 1L5 6Z" fill="#212529" />
+        <path d="M5 6L0 1L0.7 0.300003L5 4.6L9.3 0.300003L10 1L5 6Z" fill="currentColor" />
     </symbol>
 </svg>

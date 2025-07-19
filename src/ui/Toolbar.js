@@ -7,10 +7,7 @@ import { UnorderedListTool } from "./toolbarTools/UnorderedListTool.js";
 import { TextColorTool } from "./toolbarTools/TextColorTool.js";
 import { TextHeadingTool } from "./toolbarTools/TextHeadingTool.js";
 import { TextFormatClear } from "./toolbarTools/TextFormatClear.js";
-import { TextCenterTool } from "./toolbarTools/TextCenterTool.js";
-import { TextLeftTool } from "./toolbarTools/TextLeftTool.js";
-import { TextRightTool } from "./toolbarTools/TextRightTool.js";
-import { TextJustifyTool } from "./toolbarTools/TextJustifyTool.js";
+import { TextAlignTool } from "./toolbarTools/TextAlignTool.js";
 
 export class Toolbar {
     constructor(resizeEditorField) {
@@ -30,10 +27,11 @@ export class Toolbar {
         const formatTextColor = new TextColorTool().render();
         const formatTextHeading = new TextHeadingTool().render();
         const formatTextClear = new TextFormatClear().render();
-        const formatTextCenter = new TextCenterTool(this.resizeEditorField).render();
-        const formatTextLeft = new TextLeftTool(this.resizeEditorField).render();
-        const formatTextRight = new TextRightTool(this.resizeEditorField).render();
-        const formatTextJustify = new TextJustifyTool(this.resizeEditorField).render();
+        
+        const formatTextCenter = new TextAlignTool(this.resizeEditorField, "center").render();
+        const formatTextLeft = new TextAlignTool(this.resizeEditorField, "left").render();
+        const formatTextRight = new TextAlignTool(this.resizeEditorField, "right").render();
+        const formatTextJustify = new TextAlignTool(this.resizeEditorField, "justify").render();
 
         // инструменты создания/превращение
         const makeUnorderedList = new UnorderedListTool().render();
