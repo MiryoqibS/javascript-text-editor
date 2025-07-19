@@ -12,9 +12,12 @@ import { TextLeftTool } from "./toolbarTools/TextLeftTool.js";
 import { TextRightTool } from "./toolbarTools/TextRightTool.js";
 
 export class Toolbar {
-    constructor() {
+    constructor(resizeEditorField) {
         this.container = document.createElement("div");
         this.container.className = "editor-toolbar";
+
+        // Функция для автоматического изменения высота поле ввода редактора
+        this.resizeEditorField = resizeEditorField;
     }
 
     render() {
@@ -26,9 +29,9 @@ export class Toolbar {
         const formatTextColor = new TextColorTool().render();
         const formatTextHeading = new TextHeadingTool().render();
         const formatTextClear = new TextFormatClear().render();
-        const formatTextCenter = new TextCenterTool().render();
-        const formatTextLeft = new TextLeftTool().render();
-        const formatTextRight = new TextRightTool().render();
+        const formatTextCenter = new TextCenterTool(this.resizeEditorField).render();
+        const formatTextLeft = new TextLeftTool(this.resizeEditorField).render();
+        const formatTextRight = new TextRightTool(this.resizeEditorField).render();
 
         // инструменты создания/превращение
         const makeUnorderedList = new UnorderedListTool().render();

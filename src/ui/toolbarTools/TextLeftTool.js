@@ -2,8 +2,9 @@ import { Tool } from "../Tool";
 import { loadIcon } from "../../utils/loadIcon";
 
 export class TextLeftTool extends Tool {
-    constructor() {
+    constructor(resizeEditorField) {
         super(false);
+        this.resizeEditorField = resizeEditorField;
     }
 
     render() {
@@ -25,6 +26,7 @@ export class TextLeftTool extends Tool {
             textContainer.appendChild(selectedText);
 
             range.insertNode(textContainer);
+            this.resizeEditorField();
         }, leftIcon);
 
         return button;

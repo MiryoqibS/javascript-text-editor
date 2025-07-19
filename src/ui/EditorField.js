@@ -13,7 +13,7 @@ export class EditorField {
 
     setText(html) {
         this.element.innerHTML = html;
-        this.#autoResize();
+        this.autoResize();
     }
 
     getText() {
@@ -22,18 +22,18 @@ export class EditorField {
 
     onInput(callback) {
         this.element.addEventListener("input", () => {
-            this.#autoResize();
+            this.autoResize();
             callback()
         });
     }
 
-    #autoResize() {
+    autoResize() {
         this.element.style.height = "auto";
         const height = `${this.element.scrollHeight}px`;
         this.element.style.height = height;
     }
 
     #setupAutoSize() {
-        window.addEventListener("DOMContentLoaded", this.#autoResize());
+        window.addEventListener("DOMContentLoaded", this.autoResize());
     }
 }
