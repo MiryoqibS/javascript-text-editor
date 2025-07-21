@@ -8,10 +8,25 @@ export class TextFormatClear extends Tool {
     }
 
     render() {
-        const clearIcon = loadIcon("eraser");
+        const clearIcon = loadIcon("formatRemove");
     
         const button = this.init(() => {
-            document.execCommand("removeFormat");
+            const selection = window.getSelection();
+            const range = selection.getRangeAt(0);
+            const contents  = range.extractContents();
+
+            // Оборачиваем в временный контейнер для удаления форматирования
+            const container = document.createElement("div");
+            container.appendChild(contents);
+
+            // Берём только текст
+            const textOnly = container.textContent;
+
+            // Вставляем текст в поле
+            range.insertNode(document.createTextNode(textOnly));
+
+            // Очищаем выделение
+            selection.removeAllRanges();
         }, clearIcon);
 
         return button;

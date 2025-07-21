@@ -1,5 +1,5 @@
 export const loadIcon = (iconName, width = 18, height = 18) => {
-    const path = "/src/assets/sprites.svg";
+    const path = "src/assets/sprites.svg";
     const SVG_NS = "http://www.w3.org/2000/svg";
     const XLINK_NS = "http://www.w3.org/1999/xlink";
 

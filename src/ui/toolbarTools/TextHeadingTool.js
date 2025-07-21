@@ -1,8 +1,9 @@
 import { loadIcon } from "../../utils/loadIcon";
 
 export class TextHeadingTool {
-    constructor() {
+    constructor(resizeEditorField) {
         this.HEADINGS = ["h1", "h2", "h3", "h4", "h5", "h6", "p"];
+        this.resizeEditorField = resizeEditorField;
     }
 
     render() {
@@ -63,7 +64,9 @@ export class TextHeadingTool {
                 // Проверка выделенный-ли текст
                 if (sel.rangeCount) {
                     const range = sel.getRangeAt(0);
-                    document.execCommand('insertHTML', false, `<${heading}>` + document.getSelection().toString() + `</${heading}>`);
+                    const headingElement = document.createElement(heading);
+                    range.surroundContents(headingElement);
+                    this.resizeEditorField();
                 };
             });
 

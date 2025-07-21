@@ -12,9 +12,16 @@ export class TextColorTool {
         input.className = "editor-toolbar__tool-picker";
 
         input.addEventListener("input", () => {
-            const editorField = document.querySelector(".editor-field");
-            editorField.focus();
-            document.execCommand("foreColor", false, input.value);
+            const selection = window.getSelection();
+            
+            if (!selection.rangeCount || selection.isCollapsed) return;
+
+            const range = selection.getRangeAt(0);
+
+            const span = document.createElement("span");
+            span.style.color = input.value;
+            range.surroundContents(span);
+            selection.removeAllRanges();
         });
 
         container.appendChild(input);

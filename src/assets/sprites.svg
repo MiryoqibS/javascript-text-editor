@@ -90,6 +90,34 @@
         <path d="M4 6h1v4" />
         <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1" />
     </symbol>
+    <!-- Icon format remove -->
+    <symbol id="formatRemove" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-remove-formatting-icon lucide-remove-formatting">
+        <path d="M4 7V4h16v3" />
+        <path d="M5 20h6" />
+        <path d="M13 4 8 20" />
+        <path d="m15 15 5 5" />
+        <path d="m20 15-5 5" />
+    </symbol>
+    <!-- Icon sup script -->
+    <symbol id="supscript" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-superscript-icon lucide-superscript">
+        <path d="m4 19 8-8" />
+        <path d="m12 19-8-8" />
+        <path
+            d="M20 12h-4c0-1.5.442-2 1.5-2.5S20 8.334 20 7.002c0-.472-.17-.93-.484-1.29a2.105 2.105 0 0 0-2.617-.436c-.42.239-.738.614-.899 1.06" />
+    </symbol>
+    <!-- Icon sub script -->
+    <symbol id="subscript" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-subscript-icon lucide-subscript">
+        <path d="m4 5 8 8" />
+        <path d="m12 5-8 8" />
+        <path
+            d="M20 19h-4c0-1.5.44-2 1.5-2.5S20 15.33 20 14c0-.47-.17-.93-.48-1.29a2.11 2.11 0 0 0-2.62-.44c-.42.24-.74.62-.9 1.07" />
+    </symbol>
     <!-- Icon arrow down -->
     <symbol id="arrowDown" viewBox="0 0 10 6" fill="none">
         <path d="M5 6L0 1L0.7 0.300003L5 4.6L9.3 0.300003L10 1L5 6Z" fill="currentColor" />
