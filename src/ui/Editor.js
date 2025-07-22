@@ -7,7 +7,7 @@ export class Editor {
         this.container.className = "editor container";
 
         this.editorField = new EditorField();
-        this.toolbar = new Toolbar(this.editorField.autoResize.bind(this.editorField));
+        this.toolbar = new Toolbar(this.editorField.autoResize.bind(this.editorField), this.editorField.getEditorFieldElement.bind(this.editorField));
     }
 
     render() {

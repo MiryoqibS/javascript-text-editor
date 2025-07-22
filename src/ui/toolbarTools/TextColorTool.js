@@ -13,14 +13,19 @@ export class TextColorTool {
 
         input.addEventListener("input", () => {
             const selection = window.getSelection();
-            
+
             if (!selection.rangeCount || selection.isCollapsed) return;
 
-            const range = selection.getRangeAt(0);
+            try {
+                const range = selection.getRangeAt(0);
 
-            const span = document.createElement("span");
-            span.style.color = input.value;
-            range.surroundContents(span);
+                const span = document.createElement("span");
+                span.style.color = input.value;
+                range.surroundContents(span);
+            } catch (error) {
+                console.warn(`Упс ошибка: ${error.message}`);
+            };
+
             selection.removeAllRanges();
         });
 

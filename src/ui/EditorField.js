@@ -7,6 +7,10 @@ export class EditorField {
         this.#setupAutoSize();
     }
 
+    getEditorFieldElement() {
+        return this.element;
+    }
+
     render() {
         return this.element;
     }
