@@ -1,5 +1,8 @@
 export class EditorField {
     constructor() {
+        this.wrapper = document.createElement("div");
+        this.wrapper.className = "editor-field__wrapper";
+
         this.element = document.createElement("div");
         this.element.contentEditable = true;
         this.element.className = "editor-field";
@@ -7,12 +10,13 @@ export class EditorField {
         this.#setupAutoSize();
     }
 
-    getEditorFieldElement() {
-        return this.element;
+    getEditorFieldWrapper() {
+        return this.wrapper;
     }
 
     render() {
-        return this.element;
+        this.wrapper.appendChild(this.element);
+        return this.wrapper;
     }
 
     setText(html) {

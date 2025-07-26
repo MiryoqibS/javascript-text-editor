@@ -194,6 +194,13 @@
         }
     }
 
+    &-field__wrapper {
+        // Блок кода
+        .code-editor {
+            margin-block: 20px;
+        }
+    }
+
     &-field {
         &::-webkit-scrollbar {
             display: none;
@@ -250,19 +257,13 @@
             border-left: 3px solid var(--color-primary);
             padding: 0.5em 1em;
             color: #333;
-            background-color:var(--color-selection);
+            background-color: var(--color-selection);
             margin: 1em 0;
         }
 
         // Подсветка заднего фона
         mark {
             background-color: var(--color-selection);
-        }
-
-        // Блок кода
-        code {
-            display: block;
-            color: var(--color-primary);
         }
 
         // Неупорядоченный список

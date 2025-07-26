@@ -21,7 +21,11 @@ export class TextColorTool {
 
                 const span = document.createElement("span");
                 span.style.color = input.value;
-                range.surroundContents(span);
+                span.textContent = range.toString();
+
+                range.deleteContents();
+                range.insertNode(span);
+                selection.removeAllRanges();
             } catch (error) {
                 console.warn(`Упс ошибка: ${error.message}`);
             };

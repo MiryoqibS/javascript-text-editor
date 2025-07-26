@@ -5,9 +5,10 @@ import { TextFormatClear } from "./toolbarTools/TextFormatClear.js";
 import { TextAlignTool } from "./toolbarTools/TextAlignTool.js";
 import { ListTool } from "./toolbarTools/ListTool.js";
 import { MarkTool } from "./toolbarTools/MarkTool.js";
+import { CodeTool } from "./toolbarTools/CodeTool.js";
 
 export class Toolbar {
-    constructor(resizeEditorField, getEditorFiledElement) {
+    constructor(resizeEditorField, getEditorFieldWrapper) {
         this.container = document.createElement("div");
         this.container.className = "editor-toolbar";
 
@@ -15,7 +16,7 @@ export class Toolbar {
         this.resizeEditorField = resizeEditorField;
 
         // Функция для получения поле ввода
-        this.getEditorFiledElement = getEditorFiledElement
+        this.getEditorFieldWrapper = getEditorFieldWrapper
     }
 
     render() {
@@ -29,20 +30,20 @@ export class Toolbar {
         const formatTextJustify = new TextAlignTool(this.resizeEditorField, "justify").render();
 
         // инструменты для маркировки
-        const editorFieldElement = this.getEditorFiledElement();
-        const markTextBold = new MarkTool("b", "bold", editorFieldElement).createTool()
-        const markTextItalic = new MarkTool("i", "italic", editorFieldElement).createTool();
-        const markTextUnderline = new MarkTool("u", "underline", editorFieldElement).createTool();
-        const markTextStrikeThrough = new MarkTool("strike", "strikeThrough", editorFieldElement).createTool();
-        const markSubscript = new MarkTool("sub", "subscript", editorFieldElement).createTool();
-        const markSupscript = new MarkTool("sup", "supscript", editorFieldElement).createTool();
-        const markQuote = new MarkTool("blockquote", "quote", editorFieldElement).createTool();
-        const markCode = new MarkTool("code", "code", editorFieldElement).createTool();
-        const markHighlight = new MarkTool("mark", "highlight", editorFieldElement).createTool();
+        const getEditorFieldWrapper = this.getEditorFieldWrapper();
+        const markTextBold = new MarkTool("b", "bold").createTool()
+        const markTextItalic = new MarkTool("i", "italic").createTool();
+        const markTextUnderline = new MarkTool("u", "underline").createTool();
+        const markTextStrikeThrough = new MarkTool("strike", "strikeThrough").createTool();
+        const markSubscript = new MarkTool("sub", "subscript").createTool();
+        const markSupscript = new MarkTool("sup", "supscript").createTool();
+        const markQuote = new MarkTool("blockquote", "quote").createTool();
+        const markHighlight = new MarkTool("mark", "highlight").createTool();
 
         // инструменты создания/превращение
         const makeUnorderedList = new ListTool(false).render();
         const makeOrderedList = new ListTool(true).render();
+        const makeCode = new CodeTool(getEditorFieldWrapper).createTool();
 
         this.container.appendChild(markTextBold);
         this.container.appendChild(markTextItalic);
@@ -51,7 +52,6 @@ export class Toolbar {
         this.container.appendChild(markSubscript);
         this.container.appendChild(markSupscript);
         this.container.appendChild(markQuote);
-        this.container.appendChild(markCode);
         this.container.appendChild(markHighlight);
 
         this.container.appendChild(formatTextColor);
@@ -64,6 +64,7 @@ export class Toolbar {
 
         this.container.appendChild(makeUnorderedList);
         this.container.appendChild(makeOrderedList);
+        this.container.appendChild(makeCode);
 
         return this.container;
     }
