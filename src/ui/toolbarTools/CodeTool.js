@@ -4,9 +4,10 @@ import { Tool } from "../Tool";
 import { loadIcon } from "../../utils/loadIcon";
 
 export class CodeTool extends Tool {
-    constructor(parentNode) {
+    constructor(parentNode, createEditorField) {
         super(false);
         this.parentNode = parentNode;
+        this.createEditorField = createEditorField;
     }
 
     createTool() {
@@ -53,7 +54,13 @@ export class CodeTool extends Tool {
 
             // Собираем всё вместе
             container.appendChild(editorViewDeleteButton);
+
+            // Добавляем новое поле ввода текста 
+            const editorField = this.createEditorField();
+            console.log(editorField);
+            
             this.parentNode.appendChild(container);
+            this.parentNode.appendChild(editorField);
         } catch (error) {
             console.log(`Упс ошибка: ${error.message}`);
         }

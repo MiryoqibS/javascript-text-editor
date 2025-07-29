@@ -4,41 +4,43 @@ export class Tool {
         this._haveActiveMode = haveActiveMode;
     }
 
-    init(onClick, icon, editorField) {
+    init(onClick, icon) {
         const button = document.createElement("button");
         button.className = "button editor-button";
+
         button.addEventListener("click", () => {
             if (this._haveActiveMode) {
                 this.isActive = !this.isActive;
             } else {
                 this.isActive = false;
-            };
+            }
 
-            if (this.isActive) {
-                button.classList.add("active");
-            } else {
-                button.classList.remove("active");
-            };
+            button.classList.toggle("active", this.isActive);
 
-            editorField = document.querySelector(".editor-field");
-            editorField.focus();
+            const selection = window.getSelection();
+            const anchorNode = selection.anchorNode;
+
+            const activeEditorField = anchorNode
+                ? anchorNode.nodeType === 3
+                    ? anchorNode.parentElement.closest(".editor-field")
+                    : anchorNode.closest(".editor-field")
+                : null;
+
+            if (!activeEditorField) {
+                console.warn("Не найден активный editorField");
+                return;
+            }
+
+            activeEditorField.focus();
             onClick();
 
-            editorField.addEventListener("click", () => {
-                this.isActive = false;
-                if (button.classList.contains) {
-                    button.classList.remove("active");
-                };
-            });
-
-            // Изменение высоты поля ввода
-            editorField.style.height = "auto";
-            const height = `${editorField.scrollHeight}px`;
-            editorField.style.height = height;
+            // Авто-высота
+            activeEditorField.style.height = "auto";
+            activeEditorField.style.height = `${activeEditorField.scrollHeight}px`;
         });
 
         button.appendChild(icon);
-
         return button;
     }
+
 }

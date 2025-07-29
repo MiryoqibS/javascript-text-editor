@@ -13,7 +13,6 @@ export class MarkTool extends Tool {
 
         const button = this.init(() => {
             const selection = window.getSelection();
-
             if (!selection.rangeCount) return;
 
             const range = selection.getRangeAt(0);

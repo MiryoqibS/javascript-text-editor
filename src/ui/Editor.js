@@ -7,7 +7,11 @@ export class Editor {
         this.container.className = "editor container";
 
         this.editorField = new EditorField();
-        this.toolbar = new Toolbar(this.editorField.autoResize.bind(this.editorField), this.editorField.getEditorFieldWrapper.bind(this.editorField));
+        this.toolbar = new Toolbar(
+            this.editorField.autoResize.bind(this.editorField), 
+            this.editorField.getEditorFieldWrapper.bind(this.editorField),
+            this.createNewEditorField.bind(this),
+        );
     }
 
     render() {
@@ -20,6 +24,11 @@ export class Editor {
         this.container.appendChild(editorFieldElement);
 
         return this.container;
+    }
+
+    createNewEditorField() {
+        const newEditorField = new EditorField();
+        return newEditorField.getEditorField();
     }
 
     getText() {

@@ -8,7 +8,7 @@ import { MarkTool } from "./toolbarTools/MarkTool.js";
 import { CodeTool } from "./toolbarTools/CodeTool.js";
 
 export class Toolbar {
-    constructor(resizeEditorField, getEditorFieldWrapper) {
+    constructor(resizeEditorField, getEditorFieldWrapper, createEditorField) {
         this.container = document.createElement("div");
         this.container.className = "editor-toolbar";
 
@@ -16,10 +16,14 @@ export class Toolbar {
         this.resizeEditorField = resizeEditorField;
 
         // Функция для получения поле ввода
-        this.getEditorFieldWrapper = getEditorFieldWrapper
+        this.getEditorFieldWrapper = getEditorFieldWrapper;
+
+        // Функция для рендера поля ввода текста
+        this.createEditorField = createEditorField;
     }
 
     render() {
+
         // инструменты форматирования
         const formatTextColor = new TextColorTool().render();
         const formatTextClear = new TextFormatClear().render();
@@ -30,7 +34,6 @@ export class Toolbar {
         const formatTextJustify = new TextAlignTool(this.resizeEditorField, "justify").render();
 
         // инструменты для маркировки
-        const getEditorFieldWrapper = this.getEditorFieldWrapper();
         const markTextBold = new MarkTool("b", "bold").createTool()
         const markTextItalic = new MarkTool("i", "italic").createTool();
         const markTextUnderline = new MarkTool("u", "underline").createTool();
@@ -41,9 +44,10 @@ export class Toolbar {
         const markHighlight = new MarkTool("mark", "highlight").createTool();
 
         // инструменты создания/превращение
+        const getEditorFieldWrapper = this.getEditorFieldWrapper();
         const makeUnorderedList = new ListTool(false).render();
         const makeOrderedList = new ListTool(true).render();
-        const makeCode = new CodeTool(getEditorFieldWrapper).createTool();
+        const makeCode = new CodeTool(getEditorFieldWrapper, this.createEditorField).createTool();
 
         this.container.appendChild(markTextBold);
         this.container.appendChild(markTextItalic);

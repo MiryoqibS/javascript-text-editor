@@ -7,6 +7,16 @@ export class EditorField {
         this.element.contentEditable = true;
         this.element.className = "editor-field";
 
+        this.element.addEventListener("input", () => {
+            if (this.element.textContent.length <= 0) {
+                // Удаляем если есть ещё поля ввода
+                const editorFields = document.querySelectorAll(".editor-field");
+                if (editorFields.length > 1) {
+                    this.destroy();
+                };
+            };
+        });
+
         this.#setupAutoSize();
     }
 
@@ -14,18 +24,33 @@ export class EditorField {
         return this.wrapper;
     }
 
+    getEditorField() {
+        return this.element;
+    }
+
     render() {
         this.wrapper.appendChild(this.element);
         return this.wrapper;
     }
 
+    destroy() {
+        if (this.element) {
+            this.element.remove();
+            this.element = null;
+        }
+    }
+
     setText(html) {
-        this.element.innerHTML = html;
-        this.autoResize();
+        if (this.element) {
+            this.element.innerHTML = html;
+            this.autoResize();
+        }
     }
 
     getText() {
-        return this.element.innerHTML;
+        if (this.element) {
+            return this.element.innerHTML;
+        }
     }
 
     onInput(callback) {
@@ -36,12 +61,14 @@ export class EditorField {
     }
 
     autoResize() {
-        this.element.style.height = "auto";
-        const height = `${this.element.scrollHeight}px`;
-        this.element.style.height = height;
+        if (this.element) {
+            this.element.style.height = "auto";
+            const height = `${this.element.scrollHeight}px`;
+            this.element.style.height = height;
+        }
     }
 
     #setupAutoSize() {
-        window.addEventListener("DOMContentLoaded", this.autoResize());
+        window.addEventListener("DOMContentLoaded", () => this.autoResize());
     }
 }
